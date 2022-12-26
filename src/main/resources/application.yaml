@@ -1,0 +1,42 @@
+db:
+ username: postgres
+ password: pass
+ driver: PostgresDriver
+ url: postgres:5432
+ hosts: localhost,127.0.0.1
+ properties: 
+  first: 123
+  second: 567
+  third.value: Third
+ pool:
+  size: 12
+  timeout: 10
+ pools:
+    - size: 1
+      timeout: 1
+    - size: 2
+      timeout: 2
+    - size: 3
+      timeout: 3
+#spring.profiles.active=web,prod насколько помню  
+
+logging:
+  level:
+    root: INFO
+    spring.database.pool.ConnectionPool: INFO
+    
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_database
+    username: dmitry_derkach
+    password: 1234
+    #Драйвер для работы с БД мы подключили в нашем POM файле
+    driver-class-name: org.postgresql.Driver
+    #Автоматичеки будет использоваться Hikari(рассматривалось ранее)
+    #Настройки jpa задаются здесь же, через spring.jpa, например
+  jpa:
+    properties.hibernate:
+    show_sql: true
+    format_sql: true
+    hbm2ddl.auto: validate
+    
